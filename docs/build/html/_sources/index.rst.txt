@@ -3,15 +3,21 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to gnotes's documentation!
-==================================
+Learning Good!
+==================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Python:
 
    python/namespace.md
    python/instance_class_static.md
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Sphinx:
+
+   sphinx/setups.md
 
 Indices and tables
 ==================
