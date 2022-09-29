@@ -49,13 +49,16 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: tomato" >
           
 
           
             <a href="../index.html" class="icon icon-home"> gnotes
           
 
+          
+            
+            <img src="../_static/mylogo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -102,6 +105,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#github">1.4 github 에 올리고 배포하기까지</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#some-issues-and-fixing-them">1.5 Some issues and fixing them.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing">1.6 Customizing</a></li>
 </ul>
 </li>
 </ul>
@@ -242,14 +246,33 @@ The project name will occur <span class="k">in</span> several places <span class
 </ul>
 </li>
 </ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Learning Good!
+==================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Python:
+
+   python/namespace.md
+   python/instance_class_static.md
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Sphinx:
+
+   sphinx/setups.md
+</pre></div>
+</div>
 </div>
 <div class="section" id="local-computer-html-build">
 <h3>1.3.3 설정하고서 local computer에서 html파일들로 build한다<a class="headerlink" href="#local-computer-html-build" title="이 제목에 대한 퍼머링크">¶</a></h3>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 가 설정파일이다.</p>
 <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 가 설정파일이다.</p>
+<ul>
 <li><p>첫부분에서 path 관련 코멘트를 해제하고 <code class="docutils literal notranslate"><span class="pre">(.)</span></code> 를 <code class="docutils literal notranslate"><span class="pre">(../..)</span></code>으로 즉, <code class="docutils literal notranslate"><span class="pre">doc/</span></code>폴더를 최상위 폴더로 만든다.</p></li>
 <li><p>다음처럼 각 항목을 채운다.  markdown 파서와 theme에 관한 확장들이다.</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
 <span class="s1">&#39;sphinx_rtd_theme&#39;</span><span class="p">,</span>
@@ -265,26 +288,24 @@ The project name will occur <span class="k">in</span> several places <span class
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
 </pre></div>
 </div>
-</li>
-</ul>
 </div>
 <div class="section" id="github-pages">
 <h3>1.3.4 github pages에서 작동할 수 있게 두 가지 파일 추가<a class="headerlink" href="#github-pages" title="이 제목에 대한 퍼머링크">¶</a></h3>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">source/</span></code> 폴더에 다음 두 개의 파일을 추가한다.</p>
 <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">source/</span></code> 폴더에 다음 두 개의 파일을 추가한다.</p>
+<ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">.nojekyll</span></code> jekyll을 사용하지 않곘다는 목적의 빈 파일이다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">index.html</span></code> 시작페이지를 rediret할 목적으로 다음 스크립트로 채운다.</p></li>
 </ul>
+</li>
+</ul>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>  
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>  
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;refresh&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;0; url=./build/html/index.html&quot;</span> <span class="p">/&gt;</span>  
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>  
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>  
+        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;refresh&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;0; url=./build/html/index.html&quot;</span> <span class="p">/&gt;</span>  
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>  
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>  
 </pre></div>
 </div>
-</li>
-</ul>
 </div>
 </div>
 <div class="section" id="github">
@@ -309,6 +330,23 @@ The project name will occur <span class="k">in</span> several places <span class
 </div>
 </li>
 </ul>
+</div>
+<div class="section" id="customizing">
+<h2>1.6 Customizing<a class="headerlink" href="#customizing" title="이 제목에 대한 퍼머링크">¶</a></h2>
+<ul class="simple">
+<li><p>logo 추가 (/docs/source/_static/logo.png) 하여 <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 에 다음처럼 등록.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_logo</span> <span class="o">=</span> <span class="s1">&#39;mylogo.png&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>side bar color</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;style_nav_header_background&#39;</span><span class="p">:</span> <span class="s1">&#39;tomato&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 
