@@ -12,6 +12,7 @@ Learning Good!
 
    python/namespace.md
    python/instance_class_static.md
+   python/metaclass_new_call.md
 
 .. toctree::
    :maxdepth: 3

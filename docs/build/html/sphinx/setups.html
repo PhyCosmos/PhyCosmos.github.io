@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="색인" href="../genindex.html" />
     <link rel="search" title="검색" href="../search.html" />
-    <link rel="prev" title="2. Methods in classes" href="../python/instance_class_static.html" /> 
+    <link rel="prev" title="3. Metaclass __new__ and __call__" href="../python/metaclass_new_call.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,6 +90,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../python/namespace.html">1. Namespace in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/instance_class_static.html">2. Methods in classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/metaclass_new_call.html">3. Metaclass <code class="docutils literal notranslate"><span class="pre">__new__</span></code> and <code class="docutils literal notranslate"><span class="pre">__call__</span></code></a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Sphinx:</span></p>
 <ul class="current">
@@ -106,6 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#github">1.4 github 에 올리고 배포하기까지</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#some-issues-and-fixing-them">1.5 Some issues and fixing them.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#customizing">1.6 Customizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">1.7 Summary.</a></li>
 </ul>
 </li>
 </ul>
@@ -336,7 +338,7 @@ The project name will occur <span class="k">in</span> several places <span class
 <ul class="simple">
 <li><p>logo 추가 (/docs/source/_static/logo.png) 하여 <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 에 다음처럼 등록.</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_logo</span> <span class="o">=</span> <span class="s1">&#39;mylogo.png&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_logo</span> <span class="o">=</span> <span class="s1">&#39;./_static/mylogo.png&#39;</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -345,6 +347,31 @@ The project name will occur <span class="k">in</span> several places <span class
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;style_nav_header_background&#39;</span><span class="p">:</span> <span class="s1">&#39;tomato&#39;</span><span class="p">,</span>
 <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>1.7 Summary.<a class="headerlink" href="#summary" title="이 제목에 대한 퍼머링크">¶</a></h2>
+<p>테마를 살짝 수정하는 일은 <code class="docutils literal notranslate"><span class="pre">build/</span></code> 폴더에서 카피/수정한 것을 <code class="docutils literal notranslate"><span class="pre">source/</span></code>폴더의 대응하는 위치에 넣고 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> 명령으로 오버라이딩하면 된다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    cd ParentFolder
+    git init RepositoryName
+    cd RepositoryName
+    echo &quot;&quot; &gt;&gt; .gitignore
+    mkdir docs
+    cd docs
+    git checkout --orphan gh-pages
+    git rm -rf
+
+    ParentFolder      
+        ├── RepositoryName
+        │   ├── docs
+        │   │   
+    # 1차 점검: welcome page
+    sphinx-build --version
+    make html
+    sphinx-build -b html docs/source/ docs/build/html
+    tomato
+    #2980B9 -&gt; #EA6153
 </pre></div>
 </div>
 </div>
@@ -359,7 +386,7 @@ The project name will occur <span class="k">in</span> several places <span class
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../python/instance_class_static.html" class="btn btn-neutral float-left" title="2. Methods in classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../python/metaclass_new_call.html" class="btn btn-neutral float-left" title="3. Metaclass __new__ and __call__" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

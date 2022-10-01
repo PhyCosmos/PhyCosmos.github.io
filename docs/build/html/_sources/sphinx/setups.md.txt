@@ -130,11 +130,36 @@ html_theme = 'sphinx_rtd_theme'
 ## 1.6 Customizing
 - logo 추가 (/docs/source/_static/logo.png) 하여 `conf.py` 에 다음처럼 등록.  
 ```python
-html_logo = 'mylogo.png'
+html_logo = './_static/mylogo.png'
 ```  
 -  side bar color 
 ```python
 html_theme_options = {
     'style_nav_header_background': 'tomato',
 }
+```
+
+## 1.7 Summary.
+테마를 살짝 수정하는 일은 `build/` 폴더에서 카피/수정한 것을 `source/`폴더의 대응하는 위치에 넣고 `make html` 명령으로 오버라이딩하면 된다.  
+
+```
+    cd ParentFolder
+    git init RepositoryName
+    cd RepositoryName
+    echo "" >> .gitignore
+    mkdir docs
+    cd docs
+    git checkout --orphan gh-pages
+    git rm -rf
+
+    ParentFolder      
+        ├── RepositoryName
+        │   ├── docs
+        │   │   
+    # 1차 점검: welcome page
+    sphinx-build --version
+    make html
+    sphinx-build -b html docs/source/ docs/build/html
+    tomato
+    #2980B9 -> #EA6153
 ```
