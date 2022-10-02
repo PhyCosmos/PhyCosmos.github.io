@@ -16,9 +16,10 @@ Learning Good!
 
 .. toctree::
    :maxdepth: 3
-   :caption: Sphinx:
+   :caption: Documentation:
 
-   sphinx/setups.md
+   documentation/markdown.md
+   documentation/sphinx.md
 
 Indices and tables
 ==================

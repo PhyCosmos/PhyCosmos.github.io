@@ -240,8 +240,6 @@ print(whatistyped)
 
 ## References
 
-1. 남재윤, <a href="https://dojang.io/mod/page/view.php?id=2468">*파이썬 코딩도장, 47.9 메타클래스 사용하기*</a>, (2019)
-2. <a href="https://santoshk.dev/posts/2022/__init__-vs-__new__-and-when-to-use-them/">https://santoshk.dev/posts/2022/__init__-vs-__new__-and-when-to-use-them/</a>
-3. <a href="https://www.geeksforgeeks.org/__call__-in-python/">https://www.geeksforgeeks.org/__call__-in-python/</a>
-
-
+1. 남재윤, [*파이썬 코딩도장, 47.9 메타클래스 사용하기*](https://dojang.io/mod/page/view.php?id=2468), (2019)
+2. <https://santoshk.dev/posts/2022/__init__-vs-__new__-and-when-to-use-them/>
+3. <https://www.geeksforgeeks.org/__call__-in-python>
