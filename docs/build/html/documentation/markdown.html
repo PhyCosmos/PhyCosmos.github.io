@@ -40,7 +40,7 @@
     <link rel="index" title="색인" href="../genindex.html" />
     <link rel="search" title="검색" href="../search.html" />
     <link rel="next" title="1. Sphinx for rendering Markdown to HTML" href="sphinx.html" />
-    <link rel="prev" title="3. Metaclass __new__ and __call__" href="../python/metaclass_new_call.html" /> 
+    <link rel="prev" title="Privates and Property in classes" href="../python/privates_property.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,19 +92,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../python/namespace.html">1. Namespace in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/instance_class_static.html">2. Methods in classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/metaclass_new_call.html">3. Metaclass <code class="docutils literal notranslate"><span class="pre">__new__</span></code> and <code class="docutils literal notranslate"><span class="pre">__call__</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/privates_property.html">Privates and Property in classes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Markdown Tips often slipped your mind</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#basic-from-the-basic">1. Basic from the basic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">2. <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>와 긴 공백 삽입</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setex-style-vs-atx-style">3. Setex-style 헤더 vs Atx-style 헤더</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#blockquotes">4. Blockquotes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hello">hello</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#setex-style-vs-atx-style">3. Setex-style 헤더 vs Atx-style 헤더</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#blockquotes">4. Blockquotes</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#hello">hello</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#list">5. List</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#links">6. Links</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#codes">7. Codes</a></li>
@@ -232,9 +231,8 @@
 </li>
 </ul>
 </div>
-</div>
 <div class="section" id="setex-style-vs-atx-style">
-<h1>3. Setex-style 헤더 vs Atx-style 헤더<a class="headerlink" href="#setex-style-vs-atx-style" title="이 제목에 대한 퍼머링크">¶</a></h1>
+<h2>3. Setex-style 헤더 vs Atx-style 헤더<a class="headerlink" href="#setex-style-vs-atx-style" title="이 제목에 대한 퍼머링크">¶</a></h2>
 <ul>
 <li><p>Setex-style</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">헤더</span> <span class="n">H1</span>
@@ -251,6 +249,7 @@
 </div>
 </li>
 </ul>
+</div>
 <div class="section" id="blockquotes">
 <h2>4. Blockquotes<a class="headerlink" href="#blockquotes" title="이 제목에 대한 퍼머링크">¶</a></h2>
 <ul>
@@ -276,10 +275,8 @@
 </li>
 <li><p>headers, lists, and code blocks 들어간 블록.</p></li>
 </ul>
-</div>
-</div>
 <div class="section" id="hello">
-<h1>hello<a class="headerlink" href="#hello" title="이 제목에 대한 퍼머링크">¶</a></h1>
+<h3>hello<a class="headerlink" href="#hello" title="이 제목에 대한 퍼머링크">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>hi</p></li>
@@ -289,6 +286,8 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bye</span><span class="p">():</span>
     <span class="k">return</span> <span class="s2">&quot;bye!&quot;</span>
 </pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="list">
 <h2>5. List<a class="headerlink" href="#list" title="이 제목에 대한 퍼머링크">¶</a></h2>
@@ -332,7 +331,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Id</span><span class="p">]:</span> <span class="n">link</span> <span class="s2">&quot;optional title&quot;</span>
 </pre></div>
 </div>
-<p>Or up-to-three-spaces left margin, tab after colon<code class="docutils literal notranslate"><span class="pre">:</span></code>, using<code class="docutils literal notranslate"><span class="pre">()</span></code> instead of 《》 for title.</p>
+<p>Or up-to-three-spaces left margin, tab after colon<code class="docutils literal notranslate"><span class="pre">:</span></code>, using<code class="docutils literal notranslate"><span class="pre">()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">&quot;</span></code> for title.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="p">[</span><span class="nb">id</span><span class="p">]:</span>   <span class="n">link</span> <span class="p">(</span><span class="n">optional</span> <span class="n">title</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -399,7 +398,7 @@
         <a href="sphinx.html" class="btn btn-neutral float-right" title="1. Sphinx for rendering Markdown to HTML" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../python/metaclass_new_call.html" class="btn btn-neutral float-left" title="3. Metaclass __new__ and __call__" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../python/privates_property.html" class="btn btn-neutral float-left" title="Privates and Property in classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Privates and Property in classes &mdash; gnotes 0.0.1 문서</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="next" title="Markdown Tips often slipped your mind" href="../documentation/markdown.html" />
+    <link rel="prev" title="3. Metaclass __new__ and __call__" href="metaclass_new_call.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: tomato" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gnotes
+          
+
+          
+            
+            <img src="../_static/mylogo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Python:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="namespace.html">1. Namespace in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instance_class_static.html">2. Methods in classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metaclass_new_call.html">3. Metaclass <code class="docutils literal notranslate"><span class="pre">__new__</span></code> and <code class="docutils literal notranslate"><span class="pre">__call__</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Privates and Property in classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#privates-in-classes">1. Privates in Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#property-in-classes">2. Property in classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/markdown.html">Markdown Tips often slipped your mind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/sphinx.html">1. Sphinx for rendering Markdown to HTML</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gnotes</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Privates and Property in classes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/python/privates_property.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="privates-and-property-in-classes">
+<h1>Privates and Property in classes<a class="headerlink" href="#privates-and-property-in-classes" title="이 제목에 대한 퍼머링크">¶</a></h1>
+<p>파이썬에서는 private과 getter setter 지정이 느슨한 편에 속한다. 그렇듯 엄격하지는 않아도 광범위하게 통용되어
+이어져온 rules에 익숙해지도록 하자.</p>
+<div class="section" id="privates-in-classes">
+<h2>1. Privates in Classes<a class="headerlink" href="#privates-in-classes" title="이 제목에 대한 퍼머링크">¶</a></h2>
+<p>파이썬에서는 모든 것들이 다 public이다. 그러나 경우에 따라 private으로 숨겨두는 것이
+나을 수 있다. 그러한 작성자의 의도를 명기할 필요가 있는데, python에는 그런 명시적
+예약어가 없는 것이 문제이다. 이런 고심 끝에 탄생하여 convestion으로 정착한 것이
+《<em>namespace mangling</em> 이름 변형시키기》 수작이다. 이를 테면 변수 <code class="docutils literal notranslate"><span class="pre">variable</span></code>을
+살짝 변형하여 <code class="docutils literal notranslate"><span class="pre">_variable</span></code> 처럼 앞이나 뒤에 <code class="docutils literal notranslate"><span class="pre">_</span></code>uderscore를 하나 혹은 둘 씩 붙이는
+수작을 부린다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Account</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">date_of_birth</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">date_of_birth</span> <span class="o">=</span> <span class="n">date_of_birth</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_numbers</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__password</span> <span class="o">=</span> <span class="n">password</span>
+        
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Customer: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">date_of_birth</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">myaccount</span> <span class="o">=</span> <span class="n">Account</span><span class="p">(</span><span class="s1">&#39;White&#39;</span><span class="p">,</span> <span class="s1">&#39;2000-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;1234&#39;</span><span class="p">)</span>
+<span class="n">myaccount</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Customer: White  2000-01-01
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>underscore가 하나 앞에 붙은 <code class="docutils literal notranslate"><span class="pre">_numbers</span></code>와 두 개가 붙은 <code class="docutils literal notranslate"><span class="pre">__password</span></code>를 사용하여 비공개의도를 명시하였다. 그래서 인스턴스를 representation하더라도 password가 포함되지 않도록 작성했다.</p></li>
+<li><p>그러나 다음에서 보듯, 외부에서 접근할 수 있다.</p></li>
+<li><p>특이한 점은 <code class="docutils literal notranslate"><span class="pre">__password</span></code>가 <code class="docutils literal notranslate"><span class="pre">_Account__password</span></code>로 대체되었다는 점이다.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">myaccount</span><span class="o">.</span><span class="n">_numbers</span><span class="p">,</span> <span class="n">myaccount</span><span class="o">.</span><span class="n">_Account__password</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(None, &#39;1234&#39;)
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>유용한 <a class="reference external" href="https://docs.python.org/3/tutorial/classes.html">사용예</a>는 다음처럼 subclass의 메서드와 혼동을 피할 목적으로 사용하는 경우다.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Mapping</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterable</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__update</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterable</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">items_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="n">__update</span> <span class="o">=</span> <span class="n">update</span>   <span class="c1"># private copy of original update() method</span>
+
+<span class="k">class</span> <span class="nc">MappingSubclass</span><span class="p">(</span><span class="n">Mapping</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+        <span class="c1"># provides new signature for update()</span>
+        <span class="c1"># but does not break __init__()</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">items_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="property-in-classes">
+<h2>2. Property in classes<a class="headerlink" href="#property-in-classes" title="이 제목에 대한 퍼머링크">¶</a></h2>
+<ul class="simple">
+<li><p>Property 데코레이터는 getter 와 setter를 통일된 한가지 방식으로 단순화한다.</p></li>
+<li><p>위에서 설명된 것처럼 언더스코어를 사용하여 <code class="docutils literal notranslate"><span class="pre">_x</span></code> 로 놓는 것은 getter/setter 메서드명과 혼동을 피하기 위해서이다.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">def</span> <span class="nf">setx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="k">def</span> <span class="nf">getx</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span>
+    <span class="k">def</span> <span class="nf">delx</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">getx</span><span class="p">,</span> <span class="n">setx</span><span class="p">,</span> <span class="n">delx</span><span class="p">,</span> <span class="s2">&quot;I&#39;m the &#39;x&#39; property.&quot;</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;small&#39;</span>
+<span class="n">c</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;small&#39;
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">c</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>이러한 property의 모양은 다음처럼 데코레이터로 구현할 수 있음을 말해준다.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Parrot</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_voltage</span> <span class="o">=</span> <span class="mi">100000</span>
+        
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the current voltage.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_voltage</span>
+    
+<span class="n">p</span> <span class="o">=</span> <span class="n">Parrot</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">voltage</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>100000
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 처음의 예시와 정확히 같은 클래스이다.</span>
+<span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;I&#39;m the &#39;x&#39; property.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span>
+    <span class="nd">@x</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="nd">@x</span><span class="o">.</span><span class="n">deleter</span>
+    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="이 제목에 대한 퍼머링크">¶</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/tutorial/classes.html">공식튜토리얼</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/functions.html?highlight=property#property"><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Property</span></code> python doc</a></p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../documentation/markdown.html" class="btn btn-neutral float-right" title="Markdown Tips often slipped your mind" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="metaclass_new_call.html" class="btn btn-neutral float-left" title="3. Metaclass __new__ and __call__" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, wYe
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

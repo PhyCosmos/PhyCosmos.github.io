@@ -25,7 +25,7 @@
     >
     > 여기부터　　　　　여기까지
 
-# 3. Setex-style 헤더 vs Atx-style 헤더
+## 3. Setex-style 헤더 vs Atx-style 헤더
 - Setex-style
     ```
     헤더 H1
@@ -58,7 +58,7 @@
     > Back to the first level
     ```
 - headers, lists, and code blocks 들어간 블록.
-    > # hello
+    > ### hello
     >
     >> - hi
     >> - greeting
@@ -94,7 +94,7 @@
     ```
     [Id]: link "optional title"
     ```
-    Or up-to-three-spaces left margin, tab after colon`:`, using`()` instead of "" for title.
+    Or up-to-three-spaces left margin, tab after colon`:`, using`()` instead of `" "` for title.
     ```
        [id]:   link (optional title)
     ```
